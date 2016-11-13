@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Load your robot -->
+  <arg name="Pandt" default="$(find pandt_description)/robot/pandt_robot.urdf"/>
+
+  <!-- Show in Rviz   -->
+  <node name="rviz" pkg="rviz" type="rviz" args=" "/>
+
+</launch>

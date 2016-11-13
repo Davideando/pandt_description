@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+  <name>pandt_description</name>
+  <version>0.0.0</version>
+  <description>The pandt_description package</description>
+
+  <maintainer email="deivid@todo.todo">Deivid</maintainer>
+
+  <license>BSD</license>
+
+
+  <!-- Url tags are optional, but mutiple are allowed, one per tag -->
+  <!-- Optional attribute type can be: website, bugtracker, or repository -->
+  <!-- Example: -->
+  <!-- <url type="website">http://wiki.ros.org/pandt_description</url> -->
+
+
+  <!-- Author tags are optional, mutiple are allowed, one per tag -->
+  <!-- Authors do not have to be maintianers, but could be -->
+  <!-- Example: -->
+  <author email="david.ortz@uvic.com">David Ortiz</author> 
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+
+  </export>
+</package>
