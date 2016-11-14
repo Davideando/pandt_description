@@ -1,10 +1,111 @@
 <?xml version="1.0"?>
 <robot name="pandt_robot">
-   <link name="base_link">
-      <visual>
-         <geometry>
-            <cylinder length="0.6" radius="0.2"/>
-         </geometry>
-       </visual>
-   </link>
+	<link name="world"/>
+
+	<link name="base_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.05" radius="0.5"/>
+			</geometry>
+			<material name="black">
+				<color rgba="0 0 0 1"/>
+			</material>
+			<origin rpy="0 0 0" xyz="0 0 0.025"/>
+		</visual>
+	</link>
+	<joint name="fixed" type="fixed">
+		<parent link="world"/>
+		<child link="base_link"/>
+	</joint>
+
+	<link name="pan_body">
+		<visual>
+			<geometry>
+				<box size="0.3 0.3 0.8"/>
+			</geometry>
+			<material name="blue">
+				<color rgba="0 0 1 1"/>
+			</material>
+			<origin xyz="0 0 0.05"/>
+		</visual>
+	</link>
+	<joint name="Pan" type="continuous">
+		<parent link="base_link"/>
+		<child link= "pan_body"/>
+		<origin rpy="0 0 0" xyz="0 0 0.40"/>
+		<axis xyz="0 0 1"/>
+	</joint>
+
+	<link name="tilt_body">
+		<visual>
+			<geometry>
+				<box size="0.3 0.3 0.3" />
+			</geometry>
+			<material name="red">
+				<color rgba="1 0 0 1"/>
+			</material>
+			<origin xyz="0 0 0.5"/>
+		</visual>
+	</link>
+	<joint name="Tilt" type="continuous">
+		<parent link="pan_body"/>
+		<child link="tilt_body"/>
+		<origin rpy ="0 0 0" xyz="0 0 0.3"/>
+		<axis xyz="0 1 0"/>
+	</joint>
+
+	<link name="izq_body">
+		<visual>
+			<geometry>
+				<box size="0.3 0.05 0.6" />
+			</geometry>
+			<material name="silver">
+				<color rgba="0.75 0.75 0.75 1"/>
+			</material>
+			<origin xyz="0 0.175 0.25"/>
+		</visual>
+	</link>
+	<joint name="IzqBody" type="fixed">
+		<parent link="tilt_body"/>
+		<child link="izq_body"/>
+		<origin rpy ="0 0 0" xyz="0 0 0"/>
+		<axis xyz="0 1 0"/>
+	</joint>
+
+	<link name="der_body">
+		<visual>
+			<geometry>
+				<box size="0.3 0.05 0.6" />
+			</geometry>
+			<material name="silver">
+			</material>
+			<origin xyz="0 -0.175 0.25"/>
+		</visual>
+	</link>
+	<joint name="DerBody" type="fixed">
+		<parent link="tilt_body"/>
+		<child link="der_body"/>
+		<origin rpy ="0 0 0" xyz="0 0 0"/>
+		<axis xyz="0 1 0"/>
+	</joint>
+
+	<link name="camera">
+		<visual>
+			<geometry>
+				<box size="0.2 0.2 0.2" />
+			</geometry>
+			<material name="orange">
+				<color rgba="1 0.27 0. 1"/>
+			</material>
+			<origin xyz="0 0 0.75"/>
+		</visual>
+	</link>
+	<joint name="CameraBody" type="fixed">
+		<parent link="tilt_body"/>
+		<child link="camera"/>
+		<origin rpy ="0 0 0" xyz="0 0 0"/>
+		<axis xyz="0 1 0"/>
+	</joint>
+
+
 </robot>
