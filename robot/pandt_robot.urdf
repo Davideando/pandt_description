@@ -47,11 +47,12 @@
 			<origin xyz="0 0 0.5"/>
 		</visual>
 	</link>
-	<joint name="Tilt" type="continuous">
+	<joint name="Tilt" type="revolute">
 		<parent link="pan_body"/>
 		<child link="tilt_body"/>
 		<origin rpy ="0 0 0" xyz="0 0 0.3"/>
 		<axis xyz="0 1 0"/>
+		<limit effort="10" velocity="1.0" lower="-2" upper="2" />
 	</joint>
 
 	<link name="izq_body">
