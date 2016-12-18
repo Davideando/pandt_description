@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Load your robot -->
+  <arg name="Pandt" default="Pandt_robot" doc="Robot name"/>
+
+<!-- Send gui-ed joint values -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="TRUE"/>
+  </node>
+
+  <!-- Build your robot tf tree -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+
+  <param name="robot_description" textfile="$(find pandt_description)/robot/mec_pandt_robot.urdf"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="1 0 0 0 0 0 1 /world /map 100" />
+
+  <!-- Show in Rviz   -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find pandt_description)/rviz/pandt.rviz"/>
+
+</launch>
